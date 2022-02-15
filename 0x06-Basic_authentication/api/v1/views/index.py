@@ -32,7 +32,7 @@ def unauthorized() -> str:
     abort(401)
 
 @app_views.route('/forbidden', methods=['GET'], strict_slashes=False)
-def unauthorized() -> str:
+def uview_forbidden() -> str:
     """ testing (forbidden) 403 error handler
     """
     abort(403)

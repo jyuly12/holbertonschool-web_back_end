@@ -26,8 +26,8 @@ def unauthorized(error) -> str:
     """
     return jsonify({"error": "Unauthorized"}), 401
 
-@app.errorhandler(401)
-def unauthorized(error) -> str:
+@app.errorhandler(403)
+def error_forbidden(error) -> str:
     """ Access denied
     """
     return jsonify({"error": "Forbidden"}), 403
