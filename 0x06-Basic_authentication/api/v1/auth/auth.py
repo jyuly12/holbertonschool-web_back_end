@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-
+""" Basic Authentication module
+"""
 from queue import Empty
 from flask import request
 from typing import List, TypeVar
 
 
 class Auth():
+    """ Authentication process
+    """
     def require_auth(self, path: str, excluded_paths: List[str]) -> bool:
         """ public method
         """
