@@ -50,7 +50,7 @@ class BasicAuth(Auth):
                                     ) -> (str, str):
         """ Function that returns the user email and password.
         """
-        
+
         if decoded_base64_authorization_header is None:
             return (None, None)
 
