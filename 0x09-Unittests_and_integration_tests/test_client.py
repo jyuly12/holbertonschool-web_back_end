@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-""" Unittest module """
+""" Test module """
 
 from unittest import TestCase, mock
 from unittest.mock import patch, Mock
