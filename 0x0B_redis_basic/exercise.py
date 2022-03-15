@@ -7,6 +7,16 @@ import uuid
 import redis
 
 
+def count_calls(method: Callable) -> Callable:
+    """ Count number of calls to methods used
+    """
+    number = method.__qualname__
+    @wraps(method)
+    def count(self, *args, **kwds):
+        self._redis.incr(number)
+        return method(self, *args, **kwds)
+    return count
+    
 class Cache:
     """ Defines Cache class
     """
@@ -15,7 +25,7 @@ class Cache:
         self._redis = redis.Redis()
         self._redis.flushdb()
 
-
+    @count_calls
     def store(self, data: Union[str, bytes, int, float]) -> str:
         key = str(uuid.uuid4())
         self._redis.set(key, data)
@@ -35,14 +45,3 @@ class Cache:
     def get_int(self):
         pass
 
-
-def count_calls(method: Callable) -> Callable:
-    """ Count number of calls to methods used
-    """
-    number = method.__qualname__
-    @wraps(method)
-    def count(self, *args, **kwds):
-        self._redis.incr(number)
-        return method(self, *args, **kwds)
-    return count
-    
