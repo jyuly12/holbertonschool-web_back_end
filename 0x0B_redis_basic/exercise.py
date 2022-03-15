@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """ This module 
 """
+from functools import wraps
 from typing import Callable, Optional, Union
 import uuid
 import redis
 
 
 class Cache:
-    """
+    """ Defines Cache class
     """
 
     def __init__(self):
@@ -36,5 +37,12 @@ class Cache:
 
 
 def count_calls(method: Callable) -> Callable:
-    pass
+    """ Count number of calls to methods used
+    """
+    number = method.__qualname__
+    @wraps(method)
+    def count(self, *args, **kwds):
+        self._redis.incr(number)
+        return method(self, *args, **kwds)
+    return count
     
