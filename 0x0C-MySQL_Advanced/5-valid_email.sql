@@ -1,6 +1,6 @@
 -- Decreases the quantity of an item after adding a new order.
-DELIMITER 
-$$
+DELIMITER $$
+
 CREATE TRIGGER
 reset_attribute
 BEFORE UPDATE ON users
