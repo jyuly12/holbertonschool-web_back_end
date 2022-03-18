@@ -1,6 +1,5 @@
 -- Create a stored procedure AddBonus.
 -- That adds a new correction for a student.
-DROP procedure IF EXISTS AddBonus;
 
 DELIMITER $$
 
