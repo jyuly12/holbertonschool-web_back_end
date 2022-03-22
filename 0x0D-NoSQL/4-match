@@ -1,1 +1,2 @@
+// Search a coleccion with name="Holberton school" 
 db.school.find({name:"Holberton school"});
