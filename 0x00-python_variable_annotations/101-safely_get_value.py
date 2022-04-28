@@ -19,6 +19,8 @@ def safely_get_value(
                     key: Any,
                     default: Union[T, None] = None
                     ) -> Union[Any, T]:
+    """ Module Solution
+    """
     if key in dct:
         return dct[key]
     else:
